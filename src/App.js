@@ -1,23 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { Switch as ThemeSwitch, Col, Row } from 'antd';
+import Sidebar from './layout/Sidebar';
+import EventForm from './pages/EventForm';
+import Events from './pages/Events';
+import About from './pages/About';
+import Home from './pages/Home';
+import Display from './UI/Display'
+import { useTheme } from './contexts/ThemeContext';
+import AuthProvider from './contexts/AuthProvider';
 
-function App() {
+const App = () => {
+  const { theme, changeTheme } = useTheme();
+
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Row>
+
+        <AuthProvider>
+
+          <Sidebar />
+          <ThemeSwitch
+            className="theme-switch"
+            checked={theme === 'dark'}
+            onChange={changeTheme}
+            checkedChildren="Dark"
+            unCheckedChildren="Light"
+          />
+
+          <Col flex="auto" className="display-column">
+            <Switch>
+              <Route path="/about">
+                <Display>
+                  <About />
+                </Display>
+              </Route>
+              <Route path="/events">
+                <Display>
+                  <Events />
+                </Display>
+              </Route>
+              <Route path="/form">
+                <Display>
+                  <EventForm />
+                </Display>
+              </Route>
+              <Route path="/">
+                <Display>
+                  <Home />
+                </Display>
+              </Route>
+            </Switch>
+          </Col>
+
+        </AuthProvider>
+
+      </Row>
+
     </div>
   );
 }

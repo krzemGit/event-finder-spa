@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './style/index.scss';
+import 'antd/dist/antd.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// BrowserRouter imported here for the reason of animations on pages (did not manage to make them - time constrains)
+// ThemeProvider added here, since the App contains the switch
+import { BrowserRouter as Router } from 'react-router-dom';
+import ThemeProvider from './contexts/ThemeContext';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+ReactDOM.render
+  (
+    <React.StrictMode>
+      <ThemeProvider>
+        <Router>
+          <App />
+        </Router>
+      </ThemeProvider>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+
 reportWebVitals();

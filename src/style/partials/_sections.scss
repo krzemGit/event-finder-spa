@@ -1,0 +1,294 @@
+// styling for all sections (Pages), 
+// first two sections are nested in general section selector in order to overcome the defult styling of the library
+
+.section {
+  height: 100%;
+
+  &__home {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+
+    &.dark {
+      background-color: $bg-dark;
+      color: $light;
+    }
+
+    .title-wrapper {
+      padding: 40px;
+      flex-grow: 1;
+
+      @include mobile {
+        padding: 10px
+      }
+    }
+
+    .button-wrapper {
+      min-height: 100px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 40px 0;
+    }
+
+    .slide {
+      min-height: 500px;
+      background-position: center;
+      background-size: cover;
+      
+      @include mobile {
+        min-height: 300px;
+      }
+    } 
+  }
+
+  &__about {
+    position: relative;
+    overflow: hidden;
+
+    .about {
+      @include portrait {
+        flex-flow: column;
+      }
+
+      @include mobile {
+        padding-bottom: 10px;
+      }
+
+      &__img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        max-width: 65%;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
+
+        @include portrait {
+          position: static;
+          clip-path: none;
+          max-width: 100%;
+        }
+
+        @include mobile {
+          display: none;
+        }
+      }
+
+      &__btn {
+        position: absolute;
+        z-index: 9;
+        top: 20px;
+        left: 20px;
+        
+        @include portrait {
+          left: auto;
+          right: 20px;
+        }
+
+        @include mobile {
+          left: 50%;
+          right: auto;
+          transform: translateX(-50%)
+        }
+      }
+
+      &__col {
+        @include portrait {
+          flex-basis: 50%;
+          max-width: 100%;
+        }
+
+        &--text {
+          margin-top: 25%;
+          display: flex;
+          flex-direction: column;
+
+          @include portrait {
+            margin-top: 30px;
+          }
+
+          @include mobile {
+            margin-top: 55px;
+            text-align: center;
+            padding-right: 20px;
+            flex-basis: calc(100% - 55px);
+            overflow: auto;
+          }
+
+          h1 {
+            margin-bottom: 70px;
+
+            @include portrait {
+              margin: 20px 0;
+            }
+          }
+
+          span {
+            margin-bottom: 40px;
+
+            @include portrait {
+              margin-bottom: 10px;
+              max-width: 100% !important;
+              padding-right: 20px;
+            }
+
+            @include mobile {
+              font-size: 13px;
+            }
+
+            &:first-of-type {
+              max-width: 65%;
+            }
+
+            &:last-of-type {
+              max-width: 80%;
+            }
+          }
+          
+        }
+      }
+    }
+  }
+}
+
+// no nesting for this section, since these element have no built-in styling so no need for deep selectors
+
+.events {
+  overflow: hidden;
+  width: 100%;
+
+  &__container {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    @include portrait {
+      flex-direction: column;
+    }
+  }
+
+  &__col {
+    flex-basis: 50%;
+    width: 50%;
+
+    &--list {
+      @include portrait {
+        background-color: #fff;
+        width: 100%;
+      }
+
+      @include mobile-small {
+        flex-basis: 70%;
+      }
+    }
+    &--text {
+      padding: 20px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      @include portrait {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+      @include mobile {
+        padding: 10px 10px 10px 20px;
+      }
+
+      @include mobile-small {
+        flex-basis: 30%;
+      }
+
+      .text {
+        display: inline-block;
+        max-width: 80%;
+        margin-top: 50px;
+
+        @include mobile {
+          margin-top: 0;
+        }
+
+        @include mobile-small {
+          display: none;
+        }
+      } 
+    }
+  }
+
+  &__btns {
+
+    .prev-btn {
+      margin-right: 20px;
+    }
+
+    @include portrait {
+      display: none;
+    }
+
+  }
+
+  &__shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    background-color: #fff;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 37% 100%);
+    overflow: visible;
+
+    @include portrait {
+      clip-path: none;
+      position: static;
+      width: 100%;
+      display: none;
+    }
+  }
+}
+
+.event-form {
+
+  &__col {
+    &--text {
+      padding: 40px;
+
+      @include mobile-big {
+        padding: 20px;
+      }
+
+      .text {
+        display: block;
+        margin-bottom: 20px;
+
+        @include tablet {
+          &:first-of-type {
+            display: none;
+          }
+        }
+
+        @include mobile-big {
+          &:last-of-type {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &--form {
+      background-color: #fff;
+      position: relative;
+      @include mobile-big {
+        height: calc(100% - 75px);
+        overflow: scroll;
+      }
+    }
+  }
+}
+

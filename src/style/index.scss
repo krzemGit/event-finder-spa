@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Mulish:ital,wght@0,600;0,700;1,600;1,700&family=Russo+One&display=swap');
+
+$bg-dark: #001529;
+$bg-lighter: #eff5fb;
+// custom palette
+$light: #d8e9f3;
+$soft: #b2d3e6;
+$midtone: #8dbdd8;
+$darker: #68a7ca;
+$deep: #4390bc;
+$deep-shadow: #4390bc;
+// darker palette
+$d-lighter: #c8d7e6;
+$d-light: #6c92ab;
+$d-mid: #355e84;
+$d-dark: #234d74;
+$d-dark-op: #234d7440;
+$d-darker: #04203c30;
+
+@mixin mobile-small {
+  @media(max-width: 330px) {
+    @content
+  }
+};
+
+@mixin mobile {
+  @media(max-width: 500px) {
+    @content
+  }
+};
+
+@mixin mobile-big {
+  @media(max-width: 760px) {
+    @content
+  }
+};
+
+@mixin tablet {
+  @media(max-width: 1000px) {
+    @content
+  }
+};
+
+@mixin portrait {
+  @media(orientation: portrait) {
+    @content
+  }
+};
+
+@import './partials/app';
+@import './partials/base';
+@import './partials/components';
+@import './partials/sections';
+@import './partials/ui';
+
+
